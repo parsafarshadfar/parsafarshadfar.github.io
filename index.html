@@ -4,7 +4,11 @@
     <!-- Meta Tags and Title -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parsa Farshadfar - Resume</title>
+    <title>Parsa Farshadfar</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='90%' font-size='90'%3E%F0%9F%93%8A%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+    
     
     <!-- Font Awesome for Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
@@ -60,11 +64,6 @@
             background: var(--nav-background);
             transition: background 0.5s ease;
         }
-        .navbar-brand {
-            font-weight: bold;
-            font-size: 1.5em;
-            color: #fff !important;
-        }
         .navbar-nav .nav-link {
             color: #fff !important;
             margin-right: 15px;
@@ -74,7 +73,7 @@
         .navbar-nav .nav-link::after {
             content: '';
             width: 0%;
-            height: 2px;
+            height: 0px;
             background: #fff;
             position: absolute;
             left: 0;
@@ -143,14 +142,8 @@
             font-weight: 700;
             margin-bottom: 40px;
         }
-        .experience-section h2, .education-section h2 {
+        .experience-section h2, .education-section h2, .projects-section h2 {
             color: #ffffff;
-            font-weight: 700;
-            margin-bottom: 40px;
-        }
-        /* Updated Projects Section Heading */
-        .projects-section h2 {
-            color: #ffffff; /* Set to white in both modes */
             font-weight: 700;
             margin-bottom: 40px;
         }
@@ -182,22 +175,8 @@
             list-style: disc;
             padding-left: 20px;
         }
-        /* Projects Carousel */
-        .projects-carousel {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            padding: 30px 0;
-            gap: 30px;
-            scroll-padding-left: 20px;
-        }
-        .projects-carousel::-webkit-scrollbar {
-            display: none;
-        }
-        .projects-carousel .project-item {
-            flex: 0 0 auto;
-            width: 280px;
-            scroll-snap-align: start;
+        /* Projects Section */
+        .projects-section .project-item {
             transition: transform 0.4s ease;
             position: relative;
             text-align: center;
@@ -208,36 +187,25 @@
             border: 1px solid #ddd;
             cursor: pointer;
             color: var(--text-color);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        .projects-carousel .project-item:hover {
+        .projects-section .project-item:hover {
             transform: scale(1.05);
         }
-        .projects-carousel .project-item img {
+        .projects-section .project-item img {
             width: 100%;
             height: 200px;
             object-fit: cover;
             border-radius: 15px;
+            margin-bottom: 15px;
         }
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .projects-carousel {
-                gap: 15px;
-                padding: 20px 10px;
-            }
-            .projects-carousel .project-item {
-                width: 220px;
-            }
-        }
-        @media (max-width: 576px) {
-            .projects-carousel .project-item {
-                width: 180px;
-            }
-        }
-        /* Project Links */
-        .project-links {
+        .projects-section .project-links {
             margin-top: 15px;
         }
-        .project-links a {
+        .projects-section .project-links a {
             display: inline-block;
             margin: 5px;
             padding: 8px 12px;
@@ -248,7 +216,7 @@
             transition: background 0.3s ease;
             font-size: 0.9em;
         }
-        .project-links a:hover {
+        .projects-section .project-links a:hover {
             background: #0056b3;
         }
         /* Modal Styling */
@@ -309,14 +277,15 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" data-aos="fade-down">
         <div class="container">
-            <a class="navbar-brand" href="#">Parsa Farshadfar</a>
+            <!-- Remove Navbar Brand (Your Name) -->
+            <!-- <a class="navbar-brand" href="#">Parsa Farshadfar</a> -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Collapsible Navbar Content -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="#about-section">About Me</a>
                     </li>
@@ -335,13 +304,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#contact-section">Contact</a>
                     </li>
-                    <!-- Dark Mode Toggle within Navbar -->
-                    <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" href="#" onclick="toggleDarkMode()" title="Toggle Dark Mode">
-                            <i class="fas fa-moon"></i><span id="darkModeText" class="ms-2">Dark Mode</span>
-                        </a>
-                    </li>
                 </ul>
+                <!-- Dark Mode Toggle aligned to the left -->
+                <div class="ms-3">
+                    <a class="nav-link dark-mode-toggle d-flex align-items-center" href="#" onclick="toggleDarkMode()" title="Toggle Dark Mode">
+                        <i class="fas fa-moon"></i><span id="darkModeText" class="ms-2">Dark Mode</span>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -349,7 +318,7 @@
     <!-- Hero Section -->
     <section class="hero-section" id="hero-section" data-aos="zoom-in">
         <div class="container">
-            <img src="profile.jpg" alt="Parsa Farshadfar">
+            <img src="profile.jpg" alt="Parsa Farshadfar" class="img-fluid">
             <h1 class="hero-title animate__animated animate__fadeInDown">Parsa Farshadfar</h1>
             <p class="hero-description animate__animated animate__fadeInUp"><h4>Senior Data Scientist</h4></p>
         </div>
@@ -362,7 +331,7 @@
             <p>An experienced data scientist with 5+ years of experience in ML/DL model development and 
                 large-scale data analysis. Driven by a passion for solving real-world challenges, I prioritize data 
                 processing and rigorous analysis to ensure top model performance, contributing effectively to 
-                AI-driven team success. </p>
+                AI-driven team success.</p>
         </div>
     </section>
 
@@ -540,31 +509,45 @@
     <section class="projects-section" id="projects-section" data-aos="fade-up">
         <div class="container">
             <h2>Projects</h2>
-            <div class="projects-carousel">
-                <div class="project-item" data-bs-toggle="modal" data-bs-target="#projectModal">
-                    <h5>RAG WebApp - Chat with PDF using LLM</h5>
-                    <img src="whisperingpdf.png" alt="RAG WebApp">
-                    <div class="project-links">
-                        <a href="https://whisperingpdf.streamlit.app/" target="_blank">Live Demo</a>
-                        <a href="https://github.com/parsafarshadfar/rag_webapp" target="_blank">GitHub Repo</a>
+            <div class="row g-4">
+                <!-- Project Item 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-item" data-bs-toggle="modal" data-bs-target="#projectModal">
+                        <h5>RAG WebApp - Chat with PDF using LLM</h5>
+                        <img src="whisperingpdf.png" alt="RAG WebApp" class="img-fluid">
+                        <div class="project-links">
+                            <a href="https://whisperingpdf.streamlit.app/" target="_blank">Live Demo</a>
+                            <a href="https://github.com/parsafarshadfar/rag_webapp" target="_blank">GitHub Repo</a>
+                        </div>
                     </div>
                 </div>
-                <div class="project-item" data-bs-toggle="modal" data-bs-target="#projectModal">
-                    <h5>Trendi Search APP - Custom Google Trends</h5>
-                    <img src="trendisearch.png" alt="Trendi Search APP">
-                    <div class="project-links">
-                        <a href="https://trendisearch.streamlit.app/" target="_blank">Live Demo</a>
-                        <a href="https://github.com/parsafarshadfar/trendi_search" target="_blank">GitHub Repo</a>
+
+                <!-- Project Item 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-item" data-bs-toggle="modal" data-bs-target="#projectModal">
+                        <h5>EDA WebApp - Profile Datasets</h5>
+                        <img src="profiledata.png" alt="EDA WebApp" class="img-fluid">
+                        <div class="project-links">
+                            <a href="https://profiledata.streamlit.app/" target="_blank">Live Demo</a>
+                            <a href="https://github.com/parsafarshadfar/eda_webapp" target="_blank">GitHub Repo</a>
+                        </div>
                     </div>
                 </div>
-                <div class="project-item" data-bs-toggle="modal" data-bs-target="#projectModal">
-                    <h5>EDA WebApp - Profile Datasets</h5>
-                    <img src="profiledata.png" alt="EDA WebApp">
-                    <div class="project-links">
-                        <a href="https://profiledata.streamlit.app/" target="_blank">Live Demo</a>
-                        <a href="https://github.com/parsafarshadfar/eda_webapp" target="_blank">GitHub Repo</a>
+
+                <!-- Project Item 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-item" data-bs-toggle="modal" data-bs-target="#projectModal">
+                        <h5>Trendi Search APP - Custom Google Trends</h5>
+                        <img src="trendisearch.png" alt="Trendi Search APP" class="img-fluid">
+                        <div class="project-links">
+                            <a href="https://trendisearch.streamlit.app/" target="_blank">Live Demo</a>
+                            <a href="https://github.com/parsafarshadfar/trendi_search" target="_blank">GitHub Repo</a>
+                        </div>
                     </div>
                 </div>
+                
+
+                <!-- Add more project items as needed -->
             </div>
         </div>
     </section>
@@ -578,7 +561,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img src="" alt="Project Image" class="modal-img">
+                    <img src="" alt="Project Image" class="modal-img img-fluid">
                     <div class="mt-3 text-center">
                         <a href="#" id="projectDemoLink" target="_blank" class="btn btn-primary m-2">Live Demo</a>
                         <a href="#" id="projectRepoLink" target="_blank" class="btn btn-secondary m-2">GitHub Repo</a>
@@ -653,8 +636,11 @@
             item.addEventListener('click', function () {
                 const title = this.querySelector('h5').textContent;
                 const img = this.querySelector('img').getAttribute('src');
-                const demo = this.querySelector('.project-links a[href*="streamlit.app"]').getAttribute('href');
-                const repo = this.querySelector('.project-links a[href*="github.com"]').getAttribute('href');
+                const demoLinkElement = this.querySelector('.project-links a[href*="streamlit.app"]');
+                const repoLinkElement = this.querySelector('.project-links a[href*="github.com"]');
+                
+                const demo = demoLinkElement ? demoLinkElement.getAttribute('href') : '#';
+                const repo = repoLinkElement ? repoLinkElement.getAttribute('href') : '#';
 
                 document.getElementById('projectModalLabel').textContent = title;
                 document.querySelector('.modal-img').setAttribute('src', img);
