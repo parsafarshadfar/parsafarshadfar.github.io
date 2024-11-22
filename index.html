@@ -74,7 +74,7 @@
         .navbar-nav .nav-link::after {
             content: '';
             width: 0%;
-            height: 0px;
+            height: 2px;
             background: #fff;
             position: absolute;
             left: 0;
@@ -92,7 +92,7 @@
             font-size: 1.2em;
             display: flex;
             align-items: center;
-            margin-right: 15px;
+            margin-left: 15px;
         }
         .dark-mode-toggle span {
             margin-left: 5px;
@@ -307,18 +307,16 @@
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="70" tabindex="0">
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" data-aos="fade-down">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" data-aos="fade-down">
         <div class="container">
             <a class="navbar-brand" href="#">Parsa Farshadfar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <!-- Dark Mode Toggle -->
-            <div class="dark-mode-toggle ms-auto me-3" onclick="toggleDarkMode()" title="Toggle Dark Mode">
-                <i class="fas fa-moon"></i><span id="darkModeText"> Dark Mode</span>
-            </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
+            <!-- Collapsible Navbar Content -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#about-section">About Me</a>
                     </li>
@@ -336,6 +334,12 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact-section">Contact</a>
+                    </li>
+                    <!-- Dark Mode Toggle within Navbar -->
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="#" onclick="toggleDarkMode()" title="Toggle Dark Mode">
+                            <i class="fas fa-moon"></i><span id="darkModeText" class="ms-2">Dark Mode</span>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -443,9 +447,10 @@
     <section class="education-section" id="education-section" data-aos="fade-up">
         <div class="container">
             <h2>Education</h2>
-            <strong>York University, Canada</strong> - M.Sc. Computer Engineering
+            <h4>York University, Canada</h4> - M.Sc. Computer Engineering
             <br>
-            <strong>Sharif University, Iran</strong> - B.Sc. Computer Engineering
+            <br>
+            <h4>Sharif University of Technology, Iran</h4> - B.Sc. Computer Engineering
         </div>
     </section>
 
@@ -630,7 +635,7 @@
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
             // Change icon and text
-            const icon = document.querySelector('.dark-mode-toggle i');
+            const icon = document.querySelector('.dark-mode-toggle i') || document.querySelector('.nav-link .fas');
             const text = document.getElementById('darkModeText');
             if (document.body.classList.contains('dark-mode')) {
                 icon.classList.remove('fa-moon');
@@ -678,9 +683,13 @@
         document.querySelectorAll('a.nav-link').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 60, // Adjust for fixed navbar height
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
     </script>
