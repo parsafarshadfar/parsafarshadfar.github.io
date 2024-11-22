@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags and Title -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsa Farshadfar - Resume</title>
+    
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- AOS Library for Animations -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <!-- Animate.css for Additional Animations -->
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--background);
+            color: var(--text-color);
+            padding-top: 70px; /* Adjust for fixed navbar */
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+        :root {
+            --background: linear-gradient(to right, #6a11cb, #2575fc);
+            --text-color: #333;
+            --card-background: #f8f9fa;
+            --card-header-background: #6a11cb;
+            --nav-background: rgba(0, 0, 0, 0.8);
+            --footer-background: #343a40;
+            --section-background: #ffffff;
+            --section-text-color: #333;
+        }
+        .dark-mode {
+            --background: #121212;
+            --text-color: #ffffff;
+            --card-background: #1e1e1e;
+            --card-header-background: #333;
+            --nav-background: #1e1e1e;
+            --footer-background: #1e1e1e;
+            --section-background: #121212;
+            --section-text-color: #ffffff;
+        }
+        /* Navigation Bar Styling */
+        .navbar {
+            background: var(--nav-background);
+            transition: background 0.5s ease;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #fff !important;
+        }
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            margin-right: 15px;
+            position: relative;
+            font-weight: 500;
+        }
+        .navbar-nav .nav-link::after {
+            content: '';
+            width: 0%;
+            height: 0px;
+            background: #fff;
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            transition: 0.4s;
+        }
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: 100%;
+        }
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+        .dark-mode-toggle span {
+            margin-left: 5px;
+            font-size: 0.9em;
+        }
+        /* Hero Section */
+        .hero-section {
+            background: var(--background);
+            color: #fff;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+        .hero-section img {
+            width: 150px;
+            border-radius: 50%;
+            transition: transform 0.5s ease;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+        .hero-section img:hover {
+            transform: scale(1.15);
+        }
+        /* Sections Styling */
+        .about-section, .skills-section, .contact-section {
+            padding: 80px 0;
+            transition: all 0.5s ease;
+            text-align: center;
+            background: var(--section-background);
+            color: var(--section-text-color);
+        }
+        .experience-section, .projects-section {
+            padding: 80px 0;
+            transition: all 0.5s ease;
+            text-align: center;
+            background: var(--background);
+            color: var(--text-color);
+        }
+        .education-section {
+            padding: 80px 0;
+            background: var(--background);
+            color: #ffffff; /* Set text color to white */
+            text-align: center;
+        }
+        /* Headings */
+        .about-section h2, .skills-section h2, .contact-section h2 {
+            color: var(--section-text-color);
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+        .experience-section h2, .education-section h2 {
+            color: #ffffff;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+        /* Updated Projects Section Heading */
+        .projects-section h2 {
+            color: #ffffff; /* Set to white in both modes */
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+        /* Experience Section */
+        .experience-card {
+            margin-bottom: 30px;
+            border: none;
+            background: var(--card-background);
+            border-radius: 10px;
+            text-align: left;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: var(--text-color);
+        }
+        .experience-card .card-header {
+            background: var(--card-header-background);
+            color: #fff;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            font-weight: bold;
+        }
+        .experience-card .card-body {
+            padding: 20px;
+        }
+        .experience-card h5 {
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .experience-card ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+        /* Projects Carousel */
+        .projects-carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 30px 0;
+            gap: 30px;
+            scroll-padding-left: 20px;
+        }
+        .projects-carousel::-webkit-scrollbar {
+            display: none;
+        }
+        .projects-carousel .project-item {
+            flex: 0 0 auto;
+            width: 280px;
+            scroll-snap-align: start;
+            transition: transform 0.4s ease;
+            position: relative;
+            text-align: center;
+            background: var(--card-background);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+        .projects-carousel .project-item:hover {
+            transform: scale(1.05);
+        }
+        .projects-carousel .project-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .projects-carousel {
+                gap: 15px;
+                padding: 20px 10px;
+            }
+            .projects-carousel .project-item {
+                width: 220px;
+            }
+        }
+        @media (max-width: 576px) {
+            .projects-carousel .project-item {
+                width: 180px;
+            }
+        }
+        /* Project Links */
+        .project-links {
+            margin-top: 15px;
+        }
+        .project-links a {
+            display: inline-block;
+            margin: 5px;
+            padding: 8px 12px;
+            color: #fff;
+            background: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            font-size: 0.9em;
+        }
+        .project-links a:hover {
+            background: #0056b3;
+        }
+        /* Modal Styling */
+        .modal-dialog {
+            max-width: 900px;
+            margin: 2rem auto;
+        }
+        .modal-img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        /* Footer */
+        footer {
+            padding: 30px;
+            background: var(--footer-background);
+            color: #fff;
+            text-align: center;
+            transition: all 0.5s ease;
+            box-shadow: 0 -3px 15px rgba(0, 0, 0, 0.3);
+        }
+        /* Skills Section */
+        .skills-section h4 {
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--section-text-color);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tags .badge {
+            font-size: 0.9em;
+            padding: 10px 12px;
+            border-radius: 20px;
+        }
+
+        .skills-section .col-md-6 {
+            margin-bottom: 30px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="70" tabindex="0">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" data-aos="fade-down">
+        <div class="container">
+            <a class="navbar-brand" href="#">Parsa Farshadfar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Dark Mode Toggle -->
+            <div class="dark-mode-toggle ms-auto me-3" onclick="toggleDarkMode()" title="Toggle Dark Mode">
+                <i class="fas fa-moon"></i><span id="darkModeText"> Dark Mode</span>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about-section">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience-section">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education-section">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills-section">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects-section">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact-section">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero-section" data-aos="zoom-in">
+        <div class="container">
+            <img src="profile.jpg" alt="Parsa Farshadfar">
+            <h1 class="hero-title animate__animated animate__fadeInDown">Parsa Farshadfar</h1>
+            <p class="hero-description animate__animated animate__fadeInUp"><h4>Senior Data Scientist</h4></p>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section class="about-section" id="about-section" data-aos="fade-up">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>An experienced data scientist with 5+ years of experience in ML/DL model development and 
+                large-scale data analysis. Driven by a passion for solving real-world challenges, I prioritize data 
+                processing and rigorous analysis to ensure top model performance, contributing effectively to 
+                AI-driven team success. </p>
+        </div>
+    </section>
+
+    <!-- Professional Experience Section -->
+    <section class="experience-section" id="experience-section" data-aos="fade-up">
+        <div class="container">
+            <h2>Professional Experience</h2>
+            <div class="row">
+                <!-- Experience Card 1 -->
+                <div class="col-md-12" data-aos="fade-up">
+                    <div class="card experience-card">
+                        <div class="card-header">
+                            <h4>TD Bank, Toronto, Canada</h4>
+                        </div>
+                        <div class="card-body">
+                            <h5>Senior Data Scientist, AI/ML Model Validation, Risk Dept.</h5>
+                            <small>(May 2024 - Present)</small>
+                            <ul>
+                                <li>Independently led comprehensive validation projects on machine learning models used by TD Bank and TD Insurance departments across Canada and the US, ensuring high standards of analytical rigor and methodological soundness.</li>
+                                <li>Oversaw the development of machine learning models, focusing on enhancing the conceptual frameworks, assumptions, and data integrity on MS Azure Cloud platforms.</li>
+                                <li>Mentored interns, providing comprehensive training and guidance on technical skills.</li>
+                                <li>Led technical interviews to evaluate candidates' ML and data analysis proficiency.</li>
+                                <li>Integrated cutting-edge Large Language Model (LLM) technologies to drive continuous improvement in analytics capabilities.</li>
+                            </ul>
+                            <h5>Data Scientist, AI/ML Model Validation, Risk Dept.</h5>
+                            <small>(Feb 2022 - May 2024)</small>
+                            <ul>
+                                <li>Conducted over 10 in-depth validations of ML/DL models developed by various TD departments across Canada and the US.</li>
+                                <li>Performed model redevelopment for the ML models, assessing the conceptual soundness of modeling methodologies, assumptions, and the quality of large-scale data on MS Azure.</li>
+                                <li>Enhanced the validation process by 25% by integrating advanced libraries and improving the time complexity of repositories on both Virtual Machines and Databricks, resulting in significant operational efficiency gains.</li>
+                                <li>Facilitated cross-departmental collaborations to align ML strategies with business objectives by developing a web application for automatic bias-fairness analysis of ML models, tailored for TD's Compliance and Model Validation teams; the application received the Best App Award in TD Risk Management in 2023 for its innovation and high performance.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Experience Card 2 -->
+                <div class="col-md-12" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card experience-card">
+                        <div class="card-header">
+                            <h4>York University, Toronto, Canada</h4>
+                        </div>
+                        <div class="card-body">
+                            <h5>Machine Learning Researcher</h5>
+                            <small>(Sep 2019 - Nov 2021)</small>
+                            <ul>
+                                <li>Developed the Spiking Convolutional Neural Network (SCNN), an energy-efficient deep learning method for automated seizure detection, leveraging spatio-temporal features from multichannel EEG time-series data to achieve state-of-the-art precision and recall.</li>
+                                <li>Reduced computational costs by 40%, making the AI process ideal for low-power portable medical devices.</li>
+                            </ul>
+                            <h5>Teaching Assistant</h5>
+                            <small>(Sep 2019 - Nov 2021)</small>
+                            <ul>
+                                <li>Design and Analysis of Algorithms Course</li>
+                                <li>Object-Oriented Programming Course</li>
+                                <li>Data Structures Course</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Experience Card 3 -->
+                <div class="col-md-12" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card experience-card">
+                        <div class="card-header">
+                            <h4>Divar, Tehran, Iran</h4>
+                        </div>
+                        <div class="card-body">
+                            <h5>Data Scientist</h5>
+                            <small>(Apr 2017 - Jan 2018)</small>
+                            <ul>
+                                <li>Leveraged deep learning and machine learning techniques to enhance user experience and efficiency, analyzing datasets exceeding 10 TB.</li>
+                                <li>Boosted click-through rates (CTR) of Ads by 4% and enhanced advertiser revenue, achieving a 3% improvement in Return on Ad Spend (ROAS) through data-driven strategies and precision-targeted advertising initiatives.</li>
+                                <li>Transformed over 50 large-scale SQL datasets for analysis, employing various ETL techniques to ensure data integrity and accessibility.</li>
+                                <li>Simplified complex data analysis for non-technical audiences, creating over 7 interactive dashboards and visualizations that facilitated decision-making.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education-section" id="education-section" data-aos="fade-up">
+        <div class="container">
+            <h2>Education</h2>
+            <strong>York University, Canada</strong> - M.Sc. Computer Engineering
+            <br>
+            <strong>Sharif University, Iran</strong> - B.Sc. Computer Engineering
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section" id="skills-section" data-aos="fade-up">
+        <div class="container">
+            <h2>Skills</h2>
+            <div class="row">
+                <!-- Programming Languages -->
+                <div class="col-md-6" data-aos="fade-right">
+                    <h4><i class="fas fa-code"></i> Programming Languages</h4>
+                    <p class="skill-tags">
+                        <span class="badge bg-primary">Python</span>
+                        <span class="badge bg-primary">R</span>
+                        <span class="badge bg-primary">Java</span>
+                        <span class="badge bg-primary">C/C++</span>
+                    </p>
+                </div>
+                <!-- Technical Skills -->
+                <div class="col-md-6" data-aos="fade-left">
+                    <h4><i class="fas fa-laptop-code"></i> Technical Skills</h4>
+                    <p class="skill-tags">
+                        <span class="badge bg-success">Data Analysis</span>
+                        <span class="badge bg-success">Data Visualization</span>
+                        <span class="badge bg-success">Machine Learning</span>
+                        <span class="badge bg-success">Deep Learning</span>
+                        <span class="badge bg-success">Natural Language Processing (NLP)</span>
+                        <span class="badge bg-success">Data Preprocessing</span>
+                        <span class="badge bg-success">ETL</span>
+                        <span class="badge bg-success">SQL</span>
+                        <span class="badge bg-success">Generative AI</span>
+                        <span class="badge bg-success">Large Language Model (LLM)</span>
+                        <span class="badge bg-success">Retrieval-Augmented Generation (RAG)</span>
+                    </p>
+                </div>
+                <!-- Libraries & Tools -->
+                <div class="col-md-6" data-aos="fade-right">
+                    <h4><i class="fas fa-tools"></i> Libraries & Tools</h4>
+                    <p class="skill-tags">
+                        <span class="badge bg-info">PyTorch</span>
+                        <span class="badge bg-info">TensorFlow</span>
+                        <span class="badge bg-info">Keras</span>
+                        <span class="badge bg-info">Scikit-learn</span>
+                        <span class="badge bg-info">Pandas</span>
+                        <span class="badge bg-info">NumPy</span>
+                        <span class="badge bg-info">Seaborn</span>
+                        <span class="badge bg-info">Matplotlib</span>
+                        <span class="badge bg-info">Plotly</span>
+                        <span class="badge bg-info">SHAP</span>
+                        <span class="badge bg-info">PySpark</span>
+                        <span class="badge bg-info">LangChain</span>
+                        <span class="badge bg-info">Ollama</span>
+                        <span class="badge bg-info">Hugging Face</span>
+                    </p>
+                </div>
+                <!-- Other Skills -->
+                <div class="col-md-6" data-aos="fade-left">
+                    <h4><i class="fas fa-database"></i> Other Skills</h4>
+                    <p class="skill-tags">
+                        <span class="badge bg-warning">Tableau</span>
+                        <span class="badge bg-warning">Power BI</span>
+                        <span class="badge bg-warning">Microsoft Excel</span>
+                        <span class="badge bg-warning">Apache Spark</span>
+                        <span class="badge bg-warning">PostgreSQL</span>
+                        <span class="badge bg-warning">Hadoop</span>
+                        <span class="badge bg-warning">Hive</span>
+                        <span class="badge bg-warning">BigQuery</span>
+                        <span class="badge bg-warning">Git</span>
+                        <span class="badge bg-warning">Linux</span>
+                        <span class="badge bg-warning">Streamlit Dashboard</span>
+                        <span class="badge bg-warning">FinTech</span>
+                        <span class="badge bg-warning">SaaS</span>
+                        <span class="badge bg-warning">Docker</span>
+                        <span class="badge bg-warning">Kubernetes</span>
+                        <span class="badge bg-warning">CI/CD</span>
+                        <span class="badge bg-warning">Amazon AWS</span>
+                        <span class="badge bg-warning">Google Cloud (GCP)</span>
+                        <span class="badge bg-warning">Microsoft Azure</span>
+                        <span class="badge bg-warning">Databricks Cloud</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects-section" data-aos="fade-up">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-carousel">
+                <div class="project-item" data-bs-toggle="modal" data-bs-target="#projectModal">
+                    <h5>RAG WebApp - Chat with PDF using LLM</h5>
+                    <img src="whisperingpdf.png" alt="RAG WebApp">
+                    <div class="project-links">
+                        <a href="https://whisperingpdf.streamlit.app/" target="_blank">Live Demo</a>
+                        <a href="https://github.com/parsafarshadfar/rag_webapp" target="_blank">GitHub Repo</a>
+                    </div>
+                </div>
+                <div class="project-item" data-bs-toggle="modal" data-bs-target="#projectModal">
+                    <h5>Trendi Search APP - Custom Google Trends</h5>
+                    <img src="trendisearch.png" alt="Trendi Search APP">
+                    <div class="project-links">
+                        <a href="https://trendisearch.streamlit.app/" target="_blank">Live Demo</a>
+                        <a href="https://github.com/parsafarshadfar/trendi_search" target="_blank">GitHub Repo</a>
+                    </div>
+                </div>
+                <div class="project-item" data-bs-toggle="modal" data-bs-target="#projectModal">
+                    <h5>EDA WebApp - Profile Datasets</h5>
+                    <img src="profiledata.png" alt="EDA WebApp">
+                    <div class="project-links">
+                        <a href="https://profiledata.streamlit.app/" target="_blank">Live Demo</a>
+                        <a href="https://github.com/parsafarshadfar/eda_webapp" target="_blank">GitHub Repo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title project-modal-title" id="projectModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="" alt="Project Image" class="modal-img">
+                    <div class="mt-3 text-center">
+                        <a href="#" id="projectDemoLink" target="_blank" class="btn btn-primary m-2">Live Demo</a>
+                        <a href="#" id="projectRepoLink" target="_blank" class="btn btn-secondary m-2">GitHub Repo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact-section" data-aos="fade-up">
+        <div class="container">
+            <h2>Contact</h2>
+            <p>
+                <i class="fas fa-envelope"></i> 
+                Email: <a href="mailto:parsafarshadfar@live.com">parsafarshadfar@live.com</a>
+            </p>
+            <p>
+                <i class="fas fa-phone"></i> 
+                Phone: 
+                <a href="tel:+16472123368" class="btn btn-success btn-sm">
+                    <i class="fas fa-phone-alt"></i> +1 647 212 3368
+                </a>
+            </p> 
+            <div class="mt-3">
+                <a href="https://linkedin.com/in/parsafarshadfar" target="_blank" class="btn btn-primary me-2">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://github.com/parsafarshadfar" target="_blank" class="btn btn-dark">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Parsa Farshadfar. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- jQuery (Optional but recommended for Bootstrap JS plugins) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Initialize AOS Animations
+        AOS.init();
+
+        // Dark Mode Toggle Function
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            // Change icon and text
+            const icon = document.querySelector('.dark-mode-toggle i');
+            const text = document.getElementById('darkModeText');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                text.textContent = ' Light Mode';
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                text.textContent = ' Dark Mode';
+            }
+        }
+
+        // Project Modal Interactivity
+        document.querySelectorAll('.project-item').forEach(item => {
+            item.addEventListener('click', function () {
+                const title = this.querySelector('h5').textContent;
+                const img = this.querySelector('img').getAttribute('src');
+                const demo = this.querySelector('.project-links a[href*="streamlit.app"]').getAttribute('href');
+                const repo = this.querySelector('.project-links a[href*="github.com"]').getAttribute('href');
+
+                document.getElementById('projectModalLabel').textContent = title;
+                document.querySelector('.modal-img').setAttribute('src', img);
+                document.getElementById('projectDemoLink').setAttribute('href', demo);
+                document.getElementById('projectRepoLink').setAttribute('href', repo);
+            });
+        });
+
+        // Navbar Background Change on Scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-dark');
+            } else {
+                navbar.classList.remove('bg-dark');
+            }
+        });
+
+        // Activate Bootstrap Scrollspy
+        var scrollSpy = new bootstrap.ScrollSpy(document.body, {
+            target: '#navbarNav',
+            offset: 70
+        });
+
+        // Smooth Scrolling for Internal Links
+        document.querySelectorAll('a.nav-link').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
