@@ -649,7 +649,7 @@
             item.addEventListener('click', function () {
                 const title = this.querySelector('h5').textContent;
                 const img = this.querySelector('img').getAttribute('src');
-                const demoLinkElement = this.querySelector('.project-links a[href*=not([href*="github.com"])');
+                const demoLinkElement = this.querySelector('.project-links a[href*="streamlit.app"]');
                 const repoLinkElement = this.querySelector('.project-links a[href*="github.com"]');
                 
                 const demo = demoLinkElement ? demoLinkElement.getAttribute('href') : '#';
