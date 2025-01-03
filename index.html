@@ -649,12 +649,14 @@
             item.addEventListener('click', function () {
                 const title = this.querySelector('h5').textContent;
                 const img = this.querySelector('img').getAttribute('src');
-                const demoLinkElement = this.querySelector('.project-links a[href*="streamlit.app"]');
-                const repoLinkElement = this.querySelector('.project-links a[href*="github.com"]');
-                
+        
+                // Select demo and repo links dynamically
+                const demoLinkElement = this.querySelector('.project-links a:nth-child(1)');
+                const repoLinkElement = this.querySelector('.project-links a:nth-child(2)');
+        
                 const demo = demoLinkElement ? demoLinkElement.getAttribute('href') : '#';
                 const repo = repoLinkElement ? repoLinkElement.getAttribute('href') : '#';
-
+        
                 document.getElementById('projectModalLabel').textContent = title;
                 document.querySelector('.modal-img').setAttribute('src', img);
                 document.getElementById('projectDemoLink').setAttribute('href', demo);
