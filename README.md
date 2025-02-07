@@ -1,2 +1,2 @@
-Check out my resume!  
+Check out my resume!   
 https://parsafarshadfar.github.io/    
