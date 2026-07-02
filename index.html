@@ -852,7 +852,7 @@
             text-decoration: none;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: none;
-            color: #fff;
+            color: #fff !important;
         }
 
         .social-btn.linkedin {
@@ -866,7 +866,7 @@
         .social-btn:hover {
             transform: translateY(-4px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-            color: #fff;
+            color: #fff !important;
         }
 
         /* ===== Footer ===== */
@@ -1663,7 +1663,8 @@
         // ===== Activate Bootstrap Scrollspy =====
         new bootstrap.ScrollSpy(document.body, {
             target: '#navbarNav',
-            offset: 80
+            rootMargin: '0px 0px -40%',
+            smoothScroll: true
         });
 
         // ===== Smooth Scrolling =====
