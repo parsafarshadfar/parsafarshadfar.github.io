@@ -190,27 +190,9 @@
             transition: all 0.3s ease;
         }
 
-        .navbar-nav .nav-link::after {
-            content: '';
-            width: 0%;
-            height: 2px;
-            background: var(--gradient-primary);
-            position: absolute;
-            left: 50%;
-            bottom: 2px;
-            transform: translateX(-50%);
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 2px;
-        }
-
         .navbar-nav .nav-link:hover {
             color: #fff !important;
             background: rgba(255, 255, 255, 0.06);
-        }
-
-        .navbar-nav .nav-link:hover::after,
-        .navbar-nav .nav-link.active::after {
-            width: 60%;
         }
 
         /* Dark Mode Toggle */
