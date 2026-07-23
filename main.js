@@ -153,9 +153,9 @@ document.querySelectorAll('.project-card').forEach(item => {
         const modalLink = document.getElementById('projectRepoLink');
         modalLink.setAttribute('href', repo);
         if (isGitHub) {
-            modalLink.innerHTML = '<i class="fab fa-github"></i> GitHub Repo';
+            modalLink.innerHTML = '<i class="fab fa-github"></i> GitHub Repo ';
         } else {
-            modalLink.innerHTML = '<i class="fa fa-desktop"></i> Website';
+            modalLink.innerHTML = '<i class="fa fa-desktop"></i> Website ';
         }
     });
 });
