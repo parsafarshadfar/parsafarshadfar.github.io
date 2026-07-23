@@ -1,0 +1,11 @@
+# https://parsafarshadfar.com/
+# Personal site of Parsa Farshadfar. Everything here is public and intended to be
+# indexed, including by AI crawlers — being cited is the point.
+
+User-agent: *
+Allow: /
+
+# Machine-readable summary for LLMs and AI agents:
+# https://parsafarshadfar.com/llms.txt
+
+Sitemap: https://parsafarshadfar.com/sitemap.xml

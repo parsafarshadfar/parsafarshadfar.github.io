@@ -3,12 +3,44 @@
 
 <head>
     <!-- Meta Tags and Title -->
-    <meta name="msvalidate.01" content="12654620656A2408510FFBB401607778" /> #for bing search seo
+    <!-- NOTE: keep <head> free of stray text. Any non-whitespace text here closes
+         <head> early and pushes everything below it into <body>, where search
+         engines ignore meta tags. Use HTML comments for notes, never bare text. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parsa Farshadfar, PMP</title>
+    <title>Parsa Farshadfar, PMP — ML Scientist &amp; Creator of Grand Print</title>
     <meta name="description"
-        content="Parsa Farshadfar — Senior Machine Learning Scientist specializing in AI/ML risk management, deep learning, NLP, and production-grade MLOps. PMP & RAI certified.">
+        content="Parsa Farshadfar — Senior Machine Learning Scientist (PMP, RAI) in Toronto, and creator of Grand Print: the free tool to print large posters across multiple pages.">
+    <link rel="canonical" href="https://parsafarshadfar.com/">
+    <meta name="author" content="Parsa Farshadfar">
+
+    <!-- Allow full-length snippets and large image previews in search results -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+    <!-- Bing Webmaster Tools site verification -->
+    <meta name="msvalidate.01" content="12654620656A2408510FFBB401607778">
+
+    <!-- Open Graph — LinkedIn, Facebook, Slack, Discord link previews -->
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Parsa Farshadfar">
+    <meta property="og:title" content="Parsa Farshadfar, PMP — ML Scientist &amp; Creator of Grand Print">
+    <meta property="og:description"
+        content="Senior Machine Learning Scientist (PMP, RAI) in Toronto, and creator of Grand Print: the free tool to print large posters across multiple pages.">
+    <meta property="og:url" content="https://parsafarshadfar.com/">
+    <meta property="og:image" content="https://parsafarshadfar.com/data/profile_picture.jpg">
+    <meta property="og:image:width" content="475">
+    <meta property="og:image:height" content="475">
+    <meta property="og:image:alt" content="Portrait of Parsa Farshadfar">
+    <meta property="og:locale" content="en_CA">
+    <meta property="profile:first_name" content="Parsa">
+    <meta property="profile:last_name" content="Farshadfar">
+
+    <!-- Twitter / X card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Parsa Farshadfar, PMP — ML Scientist &amp; Creator of Grand Print">
+    <meta name="twitter:description"
+        content="Senior Machine Learning Scientist (PMP, RAI) in Toronto, and creator of Grand Print: the free tool to print large posters across multiple pages.">
+    <meta name="twitter:image" content="https://parsafarshadfar.com/data/profile_picture.jpg">
 
     <!-- Favicon -->
     <link rel="icon"
@@ -43,6 +75,146 @@
 
     <!-- Custom CSS (external, cacheable) -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Structured data — one @graph so Google resolves Person, page, and app as
+         linked entities rather than three unrelated blobs. The SoftwareApplication
+         node is what ties Grand Print to Parsa as its author. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://parsafarshadfar.com/#person",
+          "name": "Parsa Farshadfar",
+          "givenName": "Parsa",
+          "familyName": "Farshadfar",
+          "honorificSuffix": "PMP",
+          "url": "https://parsafarshadfar.com/",
+          "image": "https://parsafarshadfar.com/data/profile_picture.jpg",
+          "email": "mailto:parsafarshadfar@live.com",
+          "jobTitle": "Senior Machine Learning Scientist",
+          "description": "AI/ML lead with applied experience across modeling, large-scale data pipelines, and MLOps, paired with deep expertise in AI risk management. Creator of Grand Print.",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "TD Bank",
+            "url": "https://www.td.com/"
+          },
+          "homeLocation": {
+            "@type": "Place",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Toronto",
+              "addressRegion": "ON",
+              "addressCountry": "CA"
+            }
+          },
+          "alumniOf": [
+            {
+              "@type": "CollegeOrUniversity",
+              "name": "York University",
+              "url": "https://www.yorku.ca/"
+            },
+            {
+              "@type": "CollegeOrUniversity",
+              "name": "Sharif University of Technology",
+              "url": "https://www.sharif.edu/"
+            }
+          ],
+          "hasCredential": [
+            {
+              "@type": "EducationalOccupationalCredential",
+              "name": "Project Management Professional (PMP)",
+              "credentialCategory": "Professional Certification",
+              "url": "https://www.credly.com/badges/9af36518-3202-4b43-8bf5-37dfb7de5058/public_url",
+              "recognizedBy": {
+                "@type": "Organization",
+                "name": "Project Management Institute"
+              }
+            },
+            {
+              "@type": "EducationalOccupationalCredential",
+              "name": "Risk and AI (RAI)",
+              "credentialCategory": "Professional Certification",
+              "url": "https://my.garp.org/DigitalBadgeRAI?id=003Po00001IxTvxIAF",
+              "recognizedBy": {
+                "@type": "Organization",
+                "name": "Global Association of Risk Professionals (GARP)"
+              }
+            }
+          ],
+          "knowsAbout": [
+            "Machine Learning",
+            "Deep Learning",
+            "Natural Language Processing",
+            "Generative AI",
+            "Large Language Models",
+            "Retrieval-Augmented Generation",
+            "Agentic AI",
+            "AI Risk Management",
+            "Model Risk Management",
+            "MLOps",
+            "Data Engineering",
+            "PyTorch",
+            "TensorFlow",
+            "PySpark",
+            "Project Management"
+          ],
+          "sameAs": [
+            "https://www.linkedin.com/in/parsafarshadfar",
+            "https://github.com/parsafarshadfar"
+          ]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://grandprint.app/#software",
+          "name": "Grand Print",
+          "alternateName": "grandprint.app",
+          "url": "https://grandprint.app/",
+          "applicationCategory": "DesignApplication",
+          "operatingSystem": "Any modern web browser",
+          "description": "Free tool to print large posters across multiple pages. Turns one image into a tiled multi-page PDF or a coordinate-named JPG set, processed entirely in the browser with no upload, no watermark, and no paid tier.",
+          "author": { "@id": "https://parsafarshadfar.com/#person" },
+          "creator": { "@id": "https://parsafarshadfar.com/#person" },
+          "isAccessibleForFree": true,
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "featureList": [
+            "Free with no paid tier, account, or feature unlock",
+            "Watermark-free, full-quality export at any poster size",
+            "Local browser image processing with no upload endpoint",
+            "JPEG, PNG, WebP, TIFF, and HEIC/HEIF input",
+            "Multi-page tiled PDF output",
+            "Coordinate-named JPG ZIP and direct square JPG output",
+            "Pan and zoom placement with a live sheet-grid preview",
+            "Works offline after the first visit"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://parsafarshadfar.com/#website",
+          "url": "https://parsafarshadfar.com/",
+          "name": "Parsa Farshadfar",
+          "inLanguage": "en",
+          "publisher": { "@id": "https://parsafarshadfar.com/#person" }
+        },
+        {
+          "@type": "ProfilePage",
+          "@id": "https://parsafarshadfar.com/#webpage",
+          "url": "https://parsafarshadfar.com/",
+          "name": "Parsa Farshadfar, PMP — ML Scientist & Creator of Grand Print",
+          "isPartOf": { "@id": "https://parsafarshadfar.com/#website" },
+          "about": { "@id": "https://parsafarshadfar.com/#person" },
+          "mainEntity": { "@id": "https://parsafarshadfar.com/#person" },
+          "primaryImageOfPage": "https://parsafarshadfar.com/data/profile_picture.jpg",
+          "inLanguage": "en"
+        }
+      ]
+    }
+    </script>
 </head>
 
 <body>
@@ -353,23 +525,48 @@
             <h2 class="section-heading shimmer-text text-center" data-aos="fade-up">Selected Personal Projects</h2>
             <p class="section-subtitle text-center" data-aos="fade-up" data-aos-delay="100">Hands-on Technical Projects
                 Beyond the Day Job</p>
-            <div class="row g-4">
-                <!-- Project 0 -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="glass-card project-card" data-bs-toggle="modal" data-bs-target="#projectModal">
-                        <div class="project-card-img-wrapper">
-                            <img src="data/GrandPrint.jpg" alt="Grand Print App" class="project-card-img"
-                                loading="lazy">
-                        </div>
-                        <div class="project-card-body">
-                            <h5>GrandPrint.app — Print Across Multiple Pages</h5>
-                            <div class="project-links">
-                                <a href="https://grandprint.app" target="_blank"><i class="fa fa-desktop"></i>
-                                    Website</a>
-                            </div>
-                        </div>
+
+            <!-- Featured Project: Grand Print. Deliberately not a .project-card —
+                 that class is wired to the modal in main.js; this links out directly. -->
+            <article class="glass-card featured-project" data-aos="fade-up" data-aos-delay="150">
+                <a class="featured-project-media" href="https://grandprint.app/" target="_blank" rel="noopener"
+                    aria-label="Open Grand Print at grandprint.app">
+                    <img src="data/GrandPrint.jpg"
+                        alt="Grand Print — a photo tiled across a grid of printed sheets to form a large poster"
+                        width="1395" height="892" loading="lazy">
+                </a>
+                <div class="featured-project-body">
+                    <span class="featured-badge"><i class="fas fa-star"></i> Featured Project</span>
+                    <h3>
+                        <a href="https://grandprint.app/" target="_blank" rel="noopener">Grand Print</a>
+                        — print large posters across multiple pages
+                    </h3>
+                    <p>
+                        <strong>Grand Print</strong> (<a href="https://grandprint.app/" target="_blank"
+                            rel="noopener">grandprint.app</a>) is a free web app I designed and built that turns a
+                        single image into a tiled multi-page PDF — or a coordinate-named JPG set — so an ordinary home
+                        printer can produce a wall-sized poster. The entire pipeline runs client-side in the browser:
+                        the image is decoded, previewed, sliced, and exported on the device, and there is no upload
+                        endpoint to send it anywhere. It reads JPEG, PNG, WebP, TIFF and HEIC/HEIF straight off an
+                        iPhone or Samsung camera, with no conversion step.
+                    </p>
+                    <ul class="featured-points">
+                        <li><i class="fas fa-check"></i> Free at every poster size — no account, no watermark, no paid
+                            tier</li>
+                        <li><i class="fas fa-check"></i> Fully local processing; works offline after the first visit
+                        </li>
+                        <li><i class="fas fa-check"></i> Multi-page PDF or coordinate-named JPG ZIP output</li>
+                        <li><i class="fas fa-check"></i> Pan-and-zoom placement, trim marks, overlap and page labels
+                        </li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://grandprint.app/" target="_blank" rel="noopener"><i class="fa fa-desktop"></i>
+                            Open grandprint.app</a>
                     </div>
                 </div>
+            </article>
+
+            <div class="row g-4">
                 <!-- Project 1 -->
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="glass-card project-card" data-bs-toggle="modal" data-bs-target="#projectModal">
@@ -540,10 +737,13 @@
                 <a href="mailto:parsafarshadfar@live.com">parsafarshadfar@live.com</a>
             </p>
             <div class="mt-4" data-aos="fade-up" data-aos-delay="300">
-                <a href="https://linkedin.com/in/parsafarshadfar" target="_blank" class="social-btn linkedin me-2">
+                <!-- rel="me" backs the sameAs entries in the JSON-LD above, so the
+                     profiles resolve to one identity rather than three. -->
+                <a href="https://www.linkedin.com/in/parsafarshadfar" target="_blank" rel="me noopener"
+                    class="social-btn linkedin me-2">
                     <i class="fab fa-linkedin"></i> LinkedIn
                 </a>
-                <a href="https://github.com/parsafarshadfar" target="_blank" class="social-btn github">
+                <a href="https://github.com/parsafarshadfar" target="_blank" rel="me noopener" class="social-btn github">
                     <i class="fab fa-github"></i> GitHub
                 </a>
             </div>

@@ -1,0 +1,7 @@
+# Local dev tooling — never deployed (the Pages workflow builds from a git checkout)
+.claude/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini

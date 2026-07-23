@@ -1,0 +1,23 @@
+/* TEAM */
+
+    Developer: Parsa Farshadfar, PMP
+    Role: Senior Machine Learning Scientist
+    Contact: parsafarshadfar@live.com
+    LinkedIn: https://www.linkedin.com/in/parsafarshadfar
+    GitHub: https://github.com/parsafarshadfar
+    Location: Toronto, Ontario, Canada
+
+/* SITE */
+
+    Site: https://parsafarshadfar.com/
+    Source: https://github.com/parsafarshadfar/parsafarshadfar.github.io
+    Last update: 2026-07-23
+    Standards: HTML5, CSS3, schema.org JSON-LD
+    Components: Bootstrap, AOS, Vanta.js, Typed.js, Font Awesome
+    Hosting: GitHub Pages
+
+/* PROJECTS */
+
+    Grand Print: https://grandprint.app
+    Free tool to print large posters across multiple pages, processed
+    entirely in the browser with no upload, no watermark, and no paid tier.
