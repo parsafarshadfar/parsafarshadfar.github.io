@@ -145,9 +145,17 @@ document.querySelectorAll('.project-card').forEach(item => {
         const img = this.querySelector('img').getAttribute('src');
         const repoLink = this.querySelector('.project-links a');
         const repo = repoLink ? repoLink.getAttribute('href') : '#';
+        const isGitHub = repo.includes('github.com');
 
         document.getElementById('projectModalLabel').textContent = title;
         document.querySelector('.modal-img').setAttribute('src', img);
-        document.getElementById('projectRepoLink').setAttribute('href', repo);
+
+        const modalLink = document.getElementById('projectRepoLink');
+        modalLink.setAttribute('href', repo);
+        if (isGitHub) {
+            modalLink.innerHTML = '<i class="fab fa-github"></i> GitHub Repo';
+        } else {
+            modalLink.innerHTML = '<i class="fa fa-desktop"></i> Website';
+        }
     });
 });
