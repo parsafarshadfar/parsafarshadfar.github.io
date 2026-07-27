@@ -55,6 +55,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <!-- Grand Print is the most-clicked outbound destination on this page; resolve
+         its DNS before the click rather than after it. -->
+    <link rel="dns-prefetch" href="https://grandprint.app">
 
     <!-- Google Fonts — Inter + Outfit -->
     <link
@@ -73,8 +76,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" media="print"
         onload="this.media='all'">
 
-    <!-- Custom CSS (external, cacheable) -->
-    <link rel="stylesheet" href="style.css">
+    <!-- Custom CSS (external, cacheable). The ?v= is bumped whenever style.css
+         changes: GitHub Pages serves it with a long cache lifetime, so without a
+         new URL returning visitors keep rendering the previously cached copy. -->
+    <link rel="stylesheet" href="style.css?v=2">
 
     <!-- Structured data — one @graph so Google resolves Person, page, and app as
          linked entities rather than three unrelated blobs. The SoftwareApplication
@@ -171,11 +176,17 @@
           "name": "Grand Print",
           "alternateName": "grandprint.app",
           "url": "https://grandprint.app/",
+          "mainEntityOfPage": "https://grandprint.app/",
+          "sameAs": ["https://grandprint.app/"],
+          "image": "https://parsafarshadfar.com/data/GrandPrint.jpg",
           "applicationCategory": "DesignApplication",
+          "applicationSubCategory": "Poster and tiled printing tool",
           "operatingSystem": "Any modern web browser",
+          "browserRequirements": "Requires a modern browser with JavaScript enabled",
           "description": "Free tool to print large posters across multiple pages. Turns one image into a tiled multi-page PDF or a coordinate-named JPG set, processed entirely in the browser with no upload, no watermark, and no paid tier.",
           "author": { "@id": "https://parsafarshadfar.com/#person" },
           "creator": { "@id": "https://parsafarshadfar.com/#person" },
+          "subjectOf": { "@id": "https://parsafarshadfar.com/grand-print/#webpage" },
           "isAccessibleForFree": true,
           "offers": {
             "@type": "Offer",
@@ -186,10 +197,13 @@
             "Free with no paid tier, account, or feature unlock",
             "Watermark-free, full-quality export at any poster size",
             "Local browser image processing with no upload endpoint",
-            "JPEG, PNG, WebP, TIFF, and HEIC/HEIF input",
+            "JPEG, PNG, WebP, TIFF, HEIC/HEIF, and PDF input",
             "Multi-page tiled PDF output",
             "Coordinate-named JPG ZIP and direct square JPG output",
             "Pan and zoom placement with a live sheet-grid preview",
+            "Quarter-turn rotation, per-sheet exclusion, margins and overlap",
+            "Trim marks and page labels for assembly",
+            "Optional one-time 2x Lanczos resampling for small source images",
             "Works offline after the first visit"
           ]
         },
@@ -199,7 +213,8 @@
           "url": "https://parsafarshadfar.com/",
           "name": "Parsa Farshadfar",
           "inLanguage": "en",
-          "publisher": { "@id": "https://parsafarshadfar.com/#person" }
+          "publisher": { "@id": "https://parsafarshadfar.com/#person" },
+          "hasPart": { "@id": "https://parsafarshadfar.com/grand-print/#webpage" }
         },
         {
           "@type": "ProfilePage",
@@ -210,6 +225,19 @@
           "about": { "@id": "https://parsafarshadfar.com/#person" },
           "mainEntity": { "@id": "https://parsafarshadfar.com/#person" },
           "primaryImageOfPage": "https://parsafarshadfar.com/data/profile_picture.jpg",
+          "significantLink": "https://grandprint.app/",
+          "relatedLink": "https://parsafarshadfar.com/grand-print/",
+          "inLanguage": "en"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://parsafarshadfar.com/grand-print/#webpage",
+          "url": "https://parsafarshadfar.com/grand-print/",
+          "name": "Grand Print — Free Tool to Print Large Posters Across Multiple Pages",
+          "isPartOf": { "@id": "https://parsafarshadfar.com/#website" },
+          "about": { "@id": "https://grandprint.app/#software" },
+          "author": { "@id": "https://parsafarshadfar.com/#person" },
+          "primaryImageOfPage": "https://parsafarshadfar.com/data/GrandPrint.jpg",
           "inLanguage": "en"
         }
       ]
@@ -543,11 +571,11 @@
                     </h3>
                     <p>
                         <strong>Grand Print</strong> (<a href="https://grandprint.app/" target="_blank"
-                            rel="noopener">https://grandprint.app</a>) is a free web app I designed and built that turns
-                        a single image into a tiled multi-page PDF or a JPG set so an small home
-                        printer can produce a wall-sized poster. The entire pipeline runs client-side in the browser:
-                        the image is decoded, previewed, sliced, and exported on the device, and there is no upload
-                        endpoint to send it anywhere. It reads JPEG, PNG, WebP, TIFF and HEIC/HEIF.
+                            rel="noopener">https://grandprint.app</a>) is a 100% free web app I designed and built that
+                        turns a single image into a tiled multi-page poster in PDF format or as a set of JPG images, so
+                        an small home printer can produce a wall-sized poster. The entire pipeline runs client-side in
+                        the browser: the image is decoded, previewed, sliced, and exported on the device, and there is
+                        no upload endpoint to send it anywhere. It reads JPEG, PNG, PDF, WebP, TIFF and HEIC/HEIF.
                     </p>
                     <ul class="featured-points">
                         <li><i class="fas fa-check"></i> Free at every poster size — no account needed, no watermark, no

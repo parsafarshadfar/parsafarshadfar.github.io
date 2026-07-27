@@ -1057,8 +1057,15 @@ footer p {
         font-size: 1.8rem;
     }
 
+    /* Stays fluid rather than a fixed 2.2rem: .hero-name is white-space: nowrap,
+       so a size that cannot shrink pushes the name past both viewport edges on
+       narrow phones — and body's overflow-x: hidden clips it with no scrollbar,
+       silently cutting characters off the name. 8vw keeps it on one line and
+       inside the padding down to ~280px. 7vw rather than 8vw because Google Fonts
+       loads Inter with font-display: swap — the wider fallback face is what paints
+       first on every visit, and at 8vw that fallback still overflowed at 320px. */
     .hero-name {
-        font-size: 2.2rem;
+        font-size: clamp(1.25rem, 7vw, 2.2rem);
     }
 
     .section {

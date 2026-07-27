@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- NOTE: keep <head> free of stray text. Any non-whitespace text here closes
+         <head> early and pushes everything below it into <body>, where search
+         engines ignore meta tags. Use HTML comments for notes, never bare text. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Print — Free Tool to Print Large Posters Across Multiple Pages</title>
+    <meta name="description"
+        content="Grand Print is a free browser tool by Parsa Farshadfar that tiles one image across multiple printed sheets so a home printer can produce a wall-sized poster. No upload, no watermark, no paid tier.">
+    <link rel="canonical" href="https://parsafarshadfar.com/grand-print/">
+    <meta name="author" content="Parsa Farshadfar">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+    <!-- The app itself is the canonical destination for this topic. rel=me is not
+         right here (different entity), but a plain followed link plus the
+         SoftwareApplication node below is what ties this page to grandprint.app. -->
+    <link rel="preconnect" href="https://grandprint.app">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Parsa Farshadfar">
+    <meta property="og:title" content="Grand Print — Free Tool to Print Large Posters Across Multiple Pages">
+    <meta property="og:description"
+        content="A free browser tool that tiles one image across multiple printed sheets so a home printer can produce a wall-sized poster. No upload, no watermark, no paid tier.">
+    <meta property="og:url" content="https://parsafarshadfar.com/grand-print/">
+    <meta property="og:image" content="https://parsafarshadfar.com/data/GrandPrint.jpg">
+    <meta property="og:image:width" content="2048">
+    <meta property="og:image:height" content="1675">
+    <meta property="og:image:alt"
+        content="A photo tiled across a grid of printed sheets to form one large poster">
+    <meta property="og:locale" content="en_CA">
+
+    <!-- Twitter / X card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Grand Print — Free Tool to Print Large Posters Across Multiple Pages">
+    <meta name="twitter:description"
+        content="A free browser tool that tiles one image across multiple printed sheets so a home printer can produce a wall-sized poster. No upload, no watermark, no paid tier.">
+    <meta name="twitter:image" content="https://parsafarshadfar.com/data/GrandPrint.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E🤖%3C/text%3E%3C/svg%3E"
+        type="image/svg+xml">
+    <meta name="theme-color" content="#6a11cb">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles are inline and the page ships no JS: this is a leaf page whose only
+         job is to load fast and hand the reader off to grandprint.app. It
+         deliberately does not pull in style.css / Bootstrap / Vanta, which exist
+         for the single-page layout on the home page. Tokens mirror style.css. -->
+    <style>
+        :root {
+            color-scheme: light dark;
+            --font-heading: 'Inter', sans-serif;
+            --font-body: 'Outfit', sans-serif;
+            --bg: #f0f2f8;
+            --bg-alt: #f7f8fc;
+            --card: rgba(255, 255, 255, 0.65);
+            --text: #1a1a2e;
+            --muted: #4a4a6a;
+            --border: rgba(106, 17, 203, 0.15);
+            --accent-1: #6a11cb;
+            --accent-2: #2575fc;
+            --link: #5a10b0;
+            --badge-bg: rgba(106, 17, 203, 0.1);
+            --badge-text: #6a11cb;
+            --gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0a0a1a;
+                --bg-alt: #0d0d20;
+                --card: rgba(20, 20, 50, 0.6);
+                --text: #e8e8f0;
+                --muted: #b0b0d0;
+                --border: rgba(106, 17, 203, 0.3);
+                --link: #b48cff;
+                --badge-bg: rgba(106, 17, 203, 0.2);
+                --badge-text: #b48cff;
+            }
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            background-image: linear-gradient(180deg, rgba(106, 17, 203, 0.07) 0%, rgba(37, 117, 252, 0.03) 40%, transparent 100%);
+            color: var(--text);
+            font-family: var(--font-body);
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .wrap {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 28px 22px 72px;
+        }
+
+        a {
+            color: var(--link);
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+        }
+
+        a:hover {
+            text-decoration-thickness: 2px;
+        }
+
+        nav.crumbs {
+            font-size: 0.87rem;
+            color: var(--muted);
+            margin-bottom: 34px;
+        }
+
+        nav.crumbs a {
+            color: var(--muted);
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.85rem, 5.5vw, 2.7rem);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.25rem, 3.4vw, 1.55rem);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin: 46px 0 14px;
+            scroll-margin-top: 20px;
+        }
+
+        h3 {
+            font-family: var(--font-heading);
+            font-size: 1.02rem;
+            font-weight: 600;
+            margin: 26px 0 6px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--muted);
+        }
+
+        .lead {
+            font-size: 1.1rem;
+            color: var(--muted);
+        }
+
+        .badge {
+            display: inline-block;
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            padding: 5px 13px;
+            border-radius: 50px;
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            border: 1px solid var(--border);
+            margin-bottom: 18px;
+        }
+
+        .cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 26px 0 8px;
+        }
+
+        a.btn {
+            display: inline-block;
+            padding: 12px 26px;
+            border-radius: 50px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.92rem;
+            text-decoration: none;
+            color: #fff;
+            background: var(--gradient);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        a.btn.ghost {
+            background: none;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        a.btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(106, 17, 203, 0.32);
+        }
+
+        figure {
+            margin: 34px 0 8px;
+        }
+
+        figure img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+        }
+
+        figcaption {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        ul,
+        ol {
+            margin: 0 0 16px 1.15rem;
+            color: var(--muted);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        li::marker {
+            color: var(--accent-1);
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 22px 24px;
+            margin: 20px 0;
+        }
+
+        .card h3:first-child {
+            margin-top: 0;
+        }
+
+        .table-scroll {
+            overflow-x: auto;
+            margin: 18px 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            /* No min-width: two columns wrap legibly even at 320px, so the table
+               fits without in-box scrolling on real phones. .table-scroll stays
+               as the safety net if a future row needs more room. */
+            font-size: 0.93rem;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 11px 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--muted);
+        }
+
+        th {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--text);
+            white-space: nowrap;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--text);
+            margin: 24px 0 4px;
+            font-size: 1rem;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 26px;
+            border-top: 1px solid var(--border);
+            font-size: 0.87rem;
+            color: var(--muted);
+        }
+
+        footer p {
+            font-size: 0.87rem;
+            margin-bottom: 8px;
+        }
+    </style>
+
+    <!-- Structured data. The SoftwareApplication carries the same @id as the node
+         on the home page, so both pages describe one entity rather than two, and
+         its mainEntityOfPage points at grandprint.app — this page is a description
+         of the app, not a competing copy of it. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://parsafarshadfar.com/grand-print/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Parsa Farshadfar",
+              "item": "https://parsafarshadfar.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Grand Print",
+              "item": "https://parsafarshadfar.com/grand-print/"
+            }
+          ]
+        },
+        {
+          "@type": ["WebPage", "FAQPage"],
+          "@id": "https://parsafarshadfar.com/grand-print/#webpage",
+          "url": "https://parsafarshadfar.com/grand-print/",
+          "name": "Grand Print — Free Tool to Print Large Posters Across Multiple Pages",
+          "description": "Grand Print is a free browser tool by Parsa Farshadfar that tiles one image across multiple printed sheets so a home printer can produce a wall-sized poster.",
+          "isPartOf": { "@id": "https://parsafarshadfar.com/#website" },
+          "breadcrumb": { "@id": "https://parsafarshadfar.com/grand-print/#breadcrumb" },
+          "about": { "@id": "https://grandprint.app/#software" },
+          "primaryImageOfPage": "https://parsafarshadfar.com/data/GrandPrint.jpg",
+          "author": { "@id": "https://parsafarshadfar.com/#person" },
+          "inLanguage": "en",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is Grand Print free?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, at every poster size. There is no paid tier, no account, no feature unlock, no trial, and no watermark or reduced-quality free export."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does my image get uploaded to a server?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Decoding, preview, page slicing, and the finished PDF or ZIP all run locally in your browser. There is no image-upload endpoint, and the app keeps working offline after the first visit."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Which image formats can I use?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "JPEG, PNG, WebP, TIFF, and HEIC/HEIF, plus PDF. HEIC photos straight from an iPhone or Samsung camera work without a manual conversion step. Multi-page PDFs are rendered from their first page."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What do I get when I export?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A multi-page tiled PDF, or a ZIP of JPG sheets named by row and column. A 1:1 square canvas can also be exported as a single JPG."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I assemble the printed sheets?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Print at 100% scale with no fit-to-page scaling, trim the margins if you enabled trim marks, then join the sheets in the order given by the coordinate labels. Enabling a small overlap gives you a gluing allowance and hides printer margin drift."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How is Grand Print different from Rasterbator, Block Posters, Docuslice, or PrintTiler?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Grand Print is free at every size with no watermark, processes images entirely in the browser rather than on a server, accepts more input formats including HEIC and PDF, and adds pan-and-zoom placement, per-sheet exclusion, and image enhancement without a poster size cap."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do I need to install anything?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. It runs in any modern web browser on desktop or mobile, with no download, install, or sign-up."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://grandprint.app/#software",
+          "name": "Grand Print",
+          "alternateName": "grandprint.app",
+          "url": "https://grandprint.app/",
+          "mainEntityOfPage": "https://grandprint.app/",
+          "sameAs": ["https://grandprint.app/"],
+          "image": "https://parsafarshadfar.com/data/GrandPrint.jpg",
+          "applicationCategory": "DesignApplication",
+          "applicationSubCategory": "Poster and tiled printing tool",
+          "operatingSystem": "Any modern web browser",
+          "browserRequirements": "Requires a modern browser with JavaScript enabled",
+          "description": "Free tool to print large posters across multiple pages. Turns one image into a tiled multi-page PDF or a coordinate-named JPG set, processed entirely in the browser with no upload, no watermark, and no paid tier.",
+          "author": { "@id": "https://parsafarshadfar.com/#person" },
+          "creator": { "@id": "https://parsafarshadfar.com/#person" },
+          "isAccessibleForFree": true,
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "featureList": [
+            "Free with no paid tier, account, or feature unlock",
+            "Watermark-free, full-quality export at any poster size",
+            "Local browser image processing with no upload endpoint",
+            "JPEG, PNG, WebP, TIFF, HEIC/HEIF, and PDF input",
+            "Multi-page tiled PDF output",
+            "Coordinate-named JPG ZIP and direct square JPG output",
+            "Pan and zoom placement with a live sheet-grid preview",
+            "Quarter-turn rotation, per-sheet exclusion, margins and overlap",
+            "Trim marks and page labels for assembly",
+            "Optional one-time 2x Lanczos resampling for small source images",
+            "Works offline after the first visit"
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://parsafarshadfar.com/#person",
+          "name": "Parsa Farshadfar",
+          "url": "https://parsafarshadfar.com/"
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <div class="wrap">
+        <nav class="crumbs" aria-label="Breadcrumb">
+            <a href="/">Parsa Farshadfar</a> &rsaquo; Grand Print
+        </nav>
+
+        <main>
+            <span class="badge"><span aria-hidden="true">★</span> Featured Project</span>
+            <h1>Grand Print — print large posters across multiple pages</h1>
+
+            <p class="lead">
+                <a href="https://grandprint.app/" rel="noopener"><strong>Grand Print</strong></a> is a free web app I
+                designed and built that turns a single image into a tiled multi-page PDF or a set of JPG sheets, so an
+                ordinary home printer can produce a wall-sized poster. The whole pipeline runs client-side: the image is
+                decoded, previewed, sliced, and exported on your own device, and there is no upload endpoint to send it
+                anywhere.
+            </p>
+
+            <div class="cta-row">
+                <a class="btn" href="https://grandprint.app/" rel="noopener">Open grandprint.app</a>
+                <a class="btn ghost" href="https://grandprint.app/app" rel="noopener">Go straight to the editor</a>
+            </div>
+
+            <figure>
+                <a href="https://grandprint.app/" rel="noopener"
+                    aria-label="Open Grand Print at grandprint.app">
+                    <!-- Dimensions are the file's true intrinsic size (2048x1675), so the
+                         reserved box matches what loads and the image causes no layout shift.
+                         It sits below the fold on phones, so it loads lazily rather than
+                         competing with the text that is actually the LCP element. -->
+                    <img src="/data/GrandPrint.jpg"
+                        alt="Grand Print — a photo tiled across a grid of printed sheets to form a large poster"
+                        width="2048" height="1675" loading="lazy" decoding="async">
+                </a>
+                <figcaption>One image, split across a grid of sheets, taped back together as a single poster.</figcaption>
+            </figure>
+
+            <h2 id="what-it-does">What it does</h2>
+            <p>
+                Home printers top out at one sheet of paper. A poster is bigger than one sheet. Grand Print bridges that
+                gap by slicing your image into a grid of pages sized to whatever paper you actually have, adding the
+                overlap and trim marks you need to join them cleanly, then handing you a single file to print.
+            </p>
+            <p>
+                You choose the paper size and the finished poster size independently, so a 2&nbsp;&times;&nbsp;3 grid of
+                letter sheets and a 5&nbsp;&times;&nbsp;7 wall-filling grid are the same amount of work. There is no size
+                cap and no charge for larger output.
+            </p>
+
+            <h2 id="how-it-works">How it works</h2>
+            <ol>
+                <li><strong>Add an image.</strong> Pick a file from your device — or a bundled example — and it is
+                    decoded in the browser. PDFs render from their first page.</li>
+                <li><strong>Shape the layout.</strong> Pan and zoom the image against a live sheet-grid preview, set the
+                    paper and poster dimensions, adjust margins and overlap, rotate in quarter turns, and drop any sheets
+                    you do not want to print.</li>
+                <li><strong>Print and assemble.</strong> Export locally, print at 100% scale with fit-to-page turned
+                    off, trim if you enabled trim marks, and join the sheets using their coordinate labels.</li>
+            </ol>
+            <p>
+                Settings can also be pre-loaded from a URL, which is handy for repeat jobs — the parameters are
+                documented on the <a href="https://grandprint.app/deep-links" rel="noopener">deep links page</a>.
+            </p>
+
+            <h2 id="use-cases">What people print with it</h2>
+            <ul>
+                <li>Home and office wall art — photos, maps, and art prints at a size that would otherwise mean a print
+                    shop</li>
+                <li>Birthday and party decorations — backdrops, banners, and oversized numbers</li>
+                <li>Protest and rally placards</li>
+                <li>Festival and event signage</li>
+                <li>Store and restaurant posters — menus, promotions, opening hours</li>
+                <li>Classroom and school projects — timelines, science boards, and maps</li>
+            </ul>
+
+            <h2 id="formats">Formats in and out</h2>
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Direction</th>
+                            <th scope="col">Supported</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Input</th>
+                            <td>JPEG, PNG, WebP, TIFF, HEIC/HEIF, and PDF. HEIC photos straight off an iPhone or
+                                Samsung camera need no manual conversion; multi-page PDFs use page&nbsp;1.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Output</th>
+                            <td>A multi-page tiled PDF, a ZIP of JPG sheets named by row and column, or a single JPG
+                                for a 1:1 square canvas.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>
+                Small source images can optionally be run through a one-time 2&times; Lanczos resample. That is
+                resampling, not recovery — it smooths the enlargement, it does not invent detail the original never
+                had.
+            </p>
+
+            <h2 id="privacy">Free, and private by architecture</h2>
+            <div class="card">
+                <h3>Free means free</h3>
+                <p>
+                    No paid tier, no account, no feature unlock, no trial window, and no watermark or deliberately
+                    degraded free export. The full-quality file at any poster size is the only thing the app produces.
+                </p>
+                <h3>Private because nothing leaves the device</h3>
+                <p>
+                    The privacy claim here is structural rather than a promise in a policy document: there is no
+                    image-upload endpoint for your file to travel to. Decoding, preview, slicing, and the finished PDF
+                    or ZIP all happen in your browser, which is also why the app keeps working offline after the first
+                    visit.
+                </p>
+            </div>
+
+            <h2 id="comparison">How it compares</h2>
+            <p>
+                The established tools in this space are Rasterbator, Block Posters, Docuslice, and PrintTiler. Grand
+                Print differs on four things: it is free at every size with no watermark, it processes images in the
+                browser instead of on a server, it accepts a wider set of inputs including HEIC and PDF, and it adds
+                pan-and-zoom placement, per-sheet exclusion, and image enhancement without capping poster size. Detailed
+                per-tool comparisons live <a href="https://grandprint.app/" rel="noopener">on the app's own site</a>.
+            </p>
+
+            <h2 id="faq">Frequently asked questions</h2>
+
+            <p class="faq-q">Is Grand Print free?</p>
+            <p>Yes, at every poster size. No paid tier, no account, no feature unlock, no trial, and no watermark or
+                reduced-quality free export.</p>
+
+            <p class="faq-q">Does my image get uploaded to a server?</p>
+            <p>No. Decoding, preview, page slicing, and the finished PDF or ZIP all run locally in your browser. There is
+                no image-upload endpoint, and the app keeps working offline after the first visit.</p>
+
+            <p class="faq-q">Which image formats can I use?</p>
+            <p>JPEG, PNG, WebP, TIFF, and HEIC/HEIF, plus PDF. HEIC photos straight from an iPhone or Samsung camera work
+                without a manual conversion step. Multi-page PDFs are rendered from their first page.</p>
+
+            <p class="faq-q">What do I get when I export?</p>
+            <p>A multi-page tiled PDF, or a ZIP of JPG sheets named by row and column. A 1:1 square canvas can also be
+                exported as a single JPG.</p>
+
+            <p class="faq-q">How do I assemble the printed sheets?</p>
+            <p>Print at 100% scale with no fit-to-page scaling, trim the margins if you enabled trim marks, then join the
+                sheets in the order given by the coordinate labels. A small overlap gives you a gluing allowance and
+                hides printer margin drift.</p>
+
+            <p class="faq-q">How is it different from Rasterbator, Block Posters, Docuslice, or PrintTiler?</p>
+            <p>Free at every size with no watermark, fully in-browser rather than server-side, more input formats
+                including HEIC and PDF, and pan-and-zoom placement, per-sheet exclusion, and image enhancement with no
+                poster size cap.</p>
+
+            <p class="faq-q">Do I need to install anything?</p>
+            <p>No. It runs in any modern browser on desktop or mobile — no download, install, or sign-up.</p>
+
+            <h2 id="author">Who built it</h2>
+            <p>
+                I'm <a href="/">Parsa Farshadfar</a>, a Senior Machine Learning Scientist in Toronto. Grand Print is a
+                personal project, built and maintained by me — the rest of my work and projects are on
+                <a href="/">my home page</a>.
+            </p>
+
+            <div class="cta-row">
+                <a class="btn" href="https://grandprint.app/" rel="noopener">Try Grand Print — it's free</a>
+            </div>
+        </main>
+
+        <footer>
+            <p>
+                Grand Print lives at <a href="https://grandprint.app/" rel="noopener">grandprint.app</a>. This page is a
+                project write-up on the author's personal site.
+            </p>
+            <p>&copy; 2026 Parsa Farshadfar. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+
+</html>
